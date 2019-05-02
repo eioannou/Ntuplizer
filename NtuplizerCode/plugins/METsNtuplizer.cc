@@ -10,8 +10,8 @@ METsNtuplizer::METsNtuplizer( edm::EDGetTokenT<pat::METCollection> metmodifiedto
 			      NtupleBranches* nBranches,
 			      std::map< std::string, bool>& runFlags)
   : CandidateNtuplizer (nBranches)
-  , metmodifiedInputToken_ (metmodifiedtoken),
-  , metmodifedPFInputToken_ (metmodifiedPFtoken)
+  , metmodifiedInputToken_ (metmodifiedtoken)
+  , metmodifiedPFInputToken_ (metmodifiedPFtoken)
   , metpuppiInputToken_ (metpuppitoken)
   , metpuppiPFInputToken_ (metpuppiPFtoken)
 {

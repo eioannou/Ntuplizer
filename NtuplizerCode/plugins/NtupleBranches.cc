@@ -306,7 +306,7 @@ void NtupleBranches::branch( std::map< std::string, bool >& runFlags ){
     tree_ -> Branch("METPuppi_METUncertaintySize_py", &METPuppi_METUncertaintySize_py);
     tree_ -> Branch("METPuppi_JetResUpSmear_py", &METPuppi_JetResUpSmear_py);
     tree_ -> Branch("METPuppi_JetResDownSmear_py", &METPuppi_JetResDownSmear_py);
-    tree_ -> Branch("METPuppi_METFullUncertaintySize_py", &METPuppi_METPuppiFullUncertaintySize_py);
+    tree_ -> Branch("METPuppi_METFullUncertaintySize_py", &METPuppi_METFullUncertaintySize_py);
     //-- Phi --//
     tree_ -> Branch("METPuppi_JetResUp_phi", &METPuppi_JetResUp_phi);
     tree_ -> Branch("METPuppi_JetResDown_phi", &METPuppi_JetResDown_phi);
@@ -470,15 +470,15 @@ void NtupleBranches::reset( void ){
 
   //--- MET ---//
   // MET Modified without PF
-   METraw_pt.clear();
-   METraw_phi.clear();
-   METraw_sumEt.clear();
-   MET_pt.clear();
-   MET_px.clear();
-   MET_py.clear();
-   MET_phi.clear();
-   MET_sumEt.clear();
-  //-- PT --//
+  METraw_pt.clear();
+  METraw_phi.clear();
+  METraw_sumEt.clear();
+  MET_pt.clear();
+  MET_px.clear();
+  MET_py.clear();
+  MET_phi.clear();
+  MET_sumEt.clear();
+   //-- PT --//
    MET_JetResUp_pt.clear();
    MET_JetResDown_pt.clear();
    MET_JetEnUp_pt.clear();
@@ -498,7 +498,7 @@ void NtupleBranches::reset( void ){
    MET_JetResUpSmear_pt.clear();
    MET_JetResDownSmear_pt.clear();
    MET_METFullUncertaintySize_pt.clear();
-  //-- PX --/
+   //-- PX --/
    MET_JetResUp_px.clear();
    MET_JetResDown_px.clear();
    MET_JetEnUp_px.clear();
@@ -518,7 +518,7 @@ void NtupleBranches::reset( void ){
    MET_JetResUpSmear_px.clear();
    MET_JetResDownSmear_px.clear();
    MET_METFullUncertaintySize_px.clear();
-  //-- PY --/
+   //-- PY --/
    MET_JetResUp_py.clear();
    MET_JetResDown_py.clear();
    MET_JetEnUp_py.clear();
@@ -538,7 +538,7 @@ void NtupleBranches::reset( void ){
    MET_JetResUpSmear_py.clear();
    MET_JetResDownSmear_py.clear();
    MET_METFullUncertaintySize_py.clear();
-  //-- PHI ---/
+   //-- PHI ---/
    MET_JetResUp_phi.clear();
    MET_JetResDown_phi.clear();
    MET_JetEnUp_phi.clear();
@@ -558,7 +558,7 @@ void NtupleBranches::reset( void ){
    MET_JetResUpSmear_phi.clear();
    MET_JetResDownSmear_phi.clear();
    MET_METFullUncertaintySize_phi.clear();
-  //-- SumET --//
+   //-- SumET --//
    MET_JetResUp_sumEt.clear();
    MET_JetResDown_sumEt.clear();
    MET_JetEnUp_sumEt.clear();
@@ -578,8 +578,8 @@ void NtupleBranches::reset( void ){
    MET_JetResUpSmear_sumEt.clear();
    MET_JetResDownSmear_sumEt.clear();
    MET_METFullUncertaintySize_sumEt.clear();
-  //-------------------------------------------------------
-  // MET Modified with PF
+   //-------------------------------------------------------
+   // MET Modified with PF
    METPFraw_pt.clear();
    METPFraw_phi.clear();
    METPFraw_sumEt.clear();
@@ -588,7 +588,7 @@ void NtupleBranches::reset( void ){
    METPF_py.clear();
    METPF_phi.clear();
    METPF_sumEt.clear();
-  //-- PT --/
+   //-- PT --/
    METPF_JetResUp_pt.clear();
    METPF_JetResDown_pt.clear();
    METPF_JetEnUp_pt.clear();
@@ -608,7 +608,7 @@ void NtupleBranches::reset( void ){
    METPF_JetResUpSmear_pt.clear();
    METPF_JetResDownSmear_pt.clear();
    METPF_METFullUncertaintySize_pt.clear();
-  //-- PX --//
+   //-- PX --//
    METPF_JetResUp_px.clear();
    METPF_JetResDown_px.clear();
    METPF_JetEnUp_px.clear();
@@ -628,7 +628,7 @@ void NtupleBranches::reset( void ){
    METPF_JetResUpSmear_px.clear();
    METPF_JetResDownSmear_px.clear();
    METPF_METFullUncertaintySize_px.clear();
-  //-- PY --/
+   //-- PY --/
    METPF_JetResUp_py.clear();
    METPF_JetResDown_py.clear();
    METPF_JetEnUp_py.clear();
@@ -648,7 +648,7 @@ void NtupleBranches::reset( void ){
    METPF_JetResUpSmear_py.clear();
    METPF_JetResDownSmear_py.clear();
    METPF_METFullUncertaintySize_py.clear();
-  //-- PHI --//
+   //-- PHI --//
    METPF_JetResUp_phi.clear();
    METPF_JetResDown_phi.clear();
    METPF_JetEnUp_phi.clear();
@@ -668,7 +668,7 @@ void NtupleBranches::reset( void ){
    METPF_JetResUpSmear_phi.clear();
    METPF_JetResDownSmear_phi.clear();
    METPF_METFullUncertaintySize_phi.clear();
-  //-- SumEt --//
+   //-- SumEt --//
    METPF_JetResUp_sumEt.clear();
    METPF_JetResDown_sumEt.clear();
    METPF_JetEnUp_sumEt.clear();
@@ -688,8 +688,8 @@ void NtupleBranches::reset( void ){
    METPF_JetResUpSmear_sumEt.clear();
    METPF_JetResDownSmear_sumEt.clear();
    METPF_METFullUncertaintySize_sumEt.clear();
-  //--------------------------------------------------------------
-  // MET Puppi without PF
+   //--------------------------------------------------------------
+   // MET Puppi without PF
    METPuppiraw_pt.clear();
    METPuppiraw_phi.clear();
    METPuppiraw_sumEt.clear();
@@ -698,7 +698,7 @@ void NtupleBranches::reset( void ){
    METPuppi_py.clear();
    METPuppi_phi.clear();
    METPuppi_sumEt.clear();
-  //-- PT --//
+   //-- PT --//
    METPuppi_JetResUp_pt.clear();
    METPuppi_JetResDown_pt.clear();
    METPuppi_JetEnUp_pt.clear();
@@ -718,7 +718,7 @@ void NtupleBranches::reset( void ){
    METPuppi_JetResUpSmear_pt.clear();
    METPuppi_JetResDownSmear_pt.clear();
    METPuppi_METFullUncertaintySize_pt.clear();
-  //-- PX --/
+   //-- PX --/
    METPuppi_JetResUp_px.clear();
    METPuppi_JetResDown_px.clear();
    METPuppi_JetEnUp_px.clear();
@@ -738,7 +738,7 @@ void NtupleBranches::reset( void ){
    METPuppi_JetResUpSmear_px.clear();
    METPuppi_JetResDownSmear_px.clear();
    METPuppi_METFullUncertaintySize_px.clear();
-  //-- PY --//
+   //-- PY --//
    METPuppi_JetResUp_py.clear();
    METPuppi_JetResDown_py.clear();
    METPuppi_JetEnUp_py.clear();
@@ -758,7 +758,7 @@ void NtupleBranches::reset( void ){
    METPuppi_JetResUpSmear_py.clear();
    METPuppi_JetResDownSmear_py.clear();
    METPuppi_METFullUncertaintySize_py.clear();
-  //-- PHI --//
+   //-- PHI --//
    METPuppi_JetResUp_phi.clear();
    METPuppi_JetResDown_phi.clear();
    METPuppi_JetEnUp_phi.clear();
@@ -778,7 +778,7 @@ void NtupleBranches::reset( void ){
    METPuppi_JetResUpSmear_phi.clear();
    METPuppi_JetResDownSmear_phi.clear();
    METPuppi_METFullUncertaintySize_phi.clear();
-  //-- SumEt --//
+   //-- SumEt --//
    METPuppi_JetResUp_sumEt.clear();
    METPuppi_JetResDown_sumEt.clear();
    METPuppi_JetEnUp_sumEt.clear();
@@ -798,8 +798,8 @@ void NtupleBranches::reset( void ){
    METPuppi_JetResUpSmear_sumEt.clear();
    METPuppi_JetResDownSmear_sumEt.clear();
    METPuppi_METFullUncertaintySize_sumEt.clear();
-  //------------------------------------------------------------
-  // MET Puppi with PF
+   //------------------------------------------------------------
+   // MET Puppi with PF
    METPuppiPFraw_pt.clear();
    METPuppiPFraw_phi.clear();
    METPuppiPFraw_sumEt.clear();
@@ -808,7 +808,7 @@ void NtupleBranches::reset( void ){
    METPuppiPF_py.clear();
    METPuppiPF_phi.clear();
    METPuppiPF_sumEt.clear();
-  //-- PT --//
+   //-- PT --//
    METPuppiPF_JetResUp_pt.clear();
    METPuppiPF_JetResDown_pt.clear();
    METPuppiPF_JetEnUp_pt.clear();
@@ -828,7 +828,7 @@ void NtupleBranches::reset( void ){
    METPuppiPF_JetResUpSmear_pt.clear();
    METPuppiPF_JetResDownSmear_pt.clear();
    METPuppiPF_METFullUncertaintySize_pt.clear();
-  //-- PX --/
+   //-- PX --/
    METPuppiPF_JetResUp_px.clear();
    METPuppiPF_JetResDown_px.clear();
    METPuppiPF_JetEnUp_px.clear();
@@ -848,7 +848,7 @@ void NtupleBranches::reset( void ){
    METPuppiPF_JetResUpSmear_px.clear();
    METPuppiPF_JetResDownSmear_px.clear();
    METPuppiPF_METFullUncertaintySize_px.clear();
-  //-- PY --//
+   //-- PY --//
    METPuppiPF_JetResUp_py.clear();
    METPuppiPF_JetResDown_py.clear();
    METPuppiPF_JetEnUp_py.clear();
@@ -868,7 +868,7 @@ void NtupleBranches::reset( void ){
    METPuppiPF_JetResUpSmear_py.clear();
    METPuppiPF_JetResDownSmear_py.clear();
    METPuppiPF_METFullUncertaintySize_py.clear();
-  //-- PHI --//
+   //-- PHI --//
    METPuppiPF_JetResUp_phi.clear();
    METPuppiPF_JetResDown_phi.clear();
    METPuppiPF_JetEnUp_phi.clear();
@@ -888,7 +888,7 @@ void NtupleBranches::reset( void ){
    METPuppiPF_JetResUpSmear_phi.clear();
    METPuppiPF_JetResDownSmear_phi.clear();
    METPuppiPF_METFullUncertaintySize_phi.clear();
-  //-- SumEt --//
+   //-- SumEt --//
    METPuppiPF_JetResUp_sumEt.clear();
    METPuppiPF_JetResDown_sumEt.clear();
    METPuppiPF_JetEnUp_sumEt.clear();

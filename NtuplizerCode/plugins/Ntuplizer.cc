@@ -90,7 +90,7 @@ void Ntuplizer::fillDescriptions(edm::ConfigurationDescriptions& descriptions){
 
   edm::ParameterSetDescription desc;
   desc.setUnknown();
-  descripitons.addDefault(desc);
+  descriptions.addDefault(desc);
 }
 
 DEFINE_FWK_MODULE(Ntuplizer);

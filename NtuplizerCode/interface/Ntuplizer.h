@@ -9,11 +9,11 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 #include "FWCore/ServiceRegistry/interface/Service.h"
-#include "CommonTools/UtilsAlgos/interface/TFileService.h"
+#include "CommonTools/UtilAlgos/interface/TFileService.h"
 
 #include "../interface/NtupleBranches.h"
 
-#include "FWCore/Framewrok/interface/ConsumesCollector.h"
+#include "FWCore/Framework/interface/ConsumesCollector.h"
 
 class NtupleBranches;
 class CandidateNtuplizer;
@@ -32,11 +32,11 @@ class Ntuplizer : public edm::EDAnalyzer {
 
   virtual void beginRun( edm::Run const&, edm::EventSetup const&) override;
   virtual void endRun( edm::Run const&, edm::EventSetup const&) override;
-  virtual void beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventStup const&) override;
+  virtual void beginLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&) override;
   virtual void endLuminosityBlock( edm::LuminosityBlock const &, edm::EventSetup const&) override;
 
   NtupleBranches* nBranches_;
-  std::map<std::string, CandidateNtuplizer*> nTupplizers_;
+  std::map<std::string, CandidateNtuplizer*> nTuplizers_;
 
   edm::EDGetTokenT<pat::METCollection> metmodifiedToken_;
   edm::EDGetTokenT<pat::METCollection> metmodifiedPFToken_;
