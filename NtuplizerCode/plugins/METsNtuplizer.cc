@@ -3,10 +3,10 @@
 #include "CommonTools/Utils/interface/StringCutObjectSelector.h"
 #include "FWCore/Framework/interface/ConsumesCollector.h"
 
-METsNtuplizer::METsNtuplizer( edm::EDGetTokenT<pat::METCollection> metmodifiedtoken,
-			      edm::EDGetTokenT<pat::METCollection> metmodifiedPFtoken,
-			      edm::EDGetTokenT<pat::METCollection> metpuppitoken,
-			      edm::EDGetTokenT<pat::METCollection> metpuppiPFtoken,
+METsNtuplizer::METsNtuplizer( edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedtoken,
+			      edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedPFtoken,
+			      edm::EDGetTokenT<edm::View<pat::MET> > metpuppitoken,
+			      edm::EDGetTokenT<edm::View<pat::MET> > metpuppiPFtoken,
 			      NtupleBranches* nBranches,
 			      std::map< std::string, bool>& runFlags)
   : CandidateNtuplizer (nBranches)
@@ -41,7 +41,7 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   const pat::MET &metpuppiPF = METspuppiPF_ -> front();
 
   // MET without PF
-    nBranches_ -> METraw_pt.push_back(metmodified.uncorPt());
+  nBranches_ -> METraw_pt.push_back(metmodified.uncorPt());
   nBranches_ -> METraw_phi.push_back(metmodified.uncorPhi());
   nBranches_ -> METraw_sumEt.push_back(metmodified.uncorSumEt());
 
@@ -66,10 +66,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> MET_PhotonEnUp_pt.push_back(metmodified.shiftedPt(pat::MET::PhotonEnUp));
   nBranches_ -> MET_PhotonEnDown_pt.push_back(metmodified.shiftedPt(pat::MET::PhotonEnDown));
   nBranches_ -> MET_NoShift_pt.push_back(metmodified.shiftedPt(pat::MET::NoShift));
-  nBranches_ -> MET_JetResUpSmear_pt.push_back(metmodified.shiftedPt(pat::MET::JetResUpSmear));
-  nBranches_ -> MET_JetResDownSmear_pt.push_back(metmodified.shiftedPt(pat::MET::JetResDownSmear));
-  nBranches_ -> MET_METUncertaintySize_pt.push_back(metmodified.shiftedPt(pat::MET::METUncertaintySize));
-  nBranches_ -> MET_METUncertaintySize_pt.push_back(metmodified.shiftedPt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> MET_JetResUpSmear_pt.push_back(metmodified.shiftedPt(pat::MET::JetResUpSmear));
+  //nBranches_ -> MET_JetResDownSmear_pt.push_back(metmodified.shiftedPt(pat::MET::JetResDownSmear));
+  //nBranches_ -> MET_METUncertaintySize_pt.push_back(metmodified.shiftedPt(pat::MET::METUncertaintySize));
+  //nBranches_ -> MET_METUncertaintySize_pt.push_back(metmodified.shiftedPt(pat::MET::METFullUncertaintySize));
   //-- Px --//
   nBranches_ -> MET_JetResUp_px.push_back(metmodified.shiftedPx(pat::MET::JetResUp));
   nBranches_ -> MET_JetResDown_px.push_back(metmodified.shiftedPx(pat::MET::JetResDown));
@@ -86,10 +86,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> MET_PhotonEnUp_px.push_back(metmodified.shiftedPx(pat::MET::PhotonEnUp));
   nBranches_ -> MET_PhotonEnDown_px.push_back(metmodified.shiftedPx(pat::MET::PhotonEnDown));
   nBranches_ -> MET_NoShift_px.push_back(metmodified.shiftedPx(pat::MET::NoShift));
-  nBranches_ -> MET_JetResUpSmear_px.push_back(metmodified.shiftedPx(pat::MET::JetResUpSmear));
-  nBranches_ -> MET_JetResDownSmear_px.push_back(metmodified.shiftedPx(pat::MET::JetResDownSmear));
-  nBranches_ -> MET_METUncertaintySize_px.push_back(metmodified.shiftedPx(pat::MET::METUncertaintySize));
-  nBranches_ -> MET_METUncertaintySize_px.push_back(metmodified.shiftedPx(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> MET_JetResUpSmear_px.push_back(metmodified.shiftedPx(pat::MET::JetResUpSmear));
+  //nBranches_ -> MET_JetResDownSmear_px.push_back(metmodified.shiftedPx(pat::MET::JetResDownSmear));
+  //nBranches_ -> MET_METUncertaintySize_px.push_back(metmodified.shiftedPx(pat::MET::METUncertaintySize));
+  //nBranches_ -> MET_METUncertaintySize_px.push_back(metmodified.shiftedPx(pat::MET::METFullUncertaintySize));
   //-- Py --//
   nBranches_ -> MET_JetResUp_py.push_back(metmodified.shiftedPy(pat::MET::JetResUp));
   nBranches_ -> MET_JetResDown_py.push_back(metmodified.shiftedPy(pat::MET::JetResDown));
@@ -106,10 +106,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> MET_PhotonEnUp_py.push_back(metmodified.shiftedPy(pat::MET::PhotonEnUp));
   nBranches_ -> MET_PhotonEnDown_py.push_back(metmodified.shiftedPy(pat::MET::PhotonEnDown));
   nBranches_ -> MET_NoShift_py.push_back(metmodified.shiftedPy(pat::MET::NoShift));
-  nBranches_ -> MET_JetResUpSmear_py.push_back(metmodified.shiftedPy(pat::MET::JetResUpSmear));
-  nBranches_ -> MET_JetResDownSmear_py.push_back(metmodified.shiftedPy(pat::MET::JetResDownSmear));
-  nBranches_ -> MET_METUncertaintySize_py.push_back(metmodified.shiftedPy(pat::MET::METUncertaintySize));
-  nBranches_ -> MET_METUncertaintySize_py.push_back(metmodified.shiftedPy(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> MET_JetResUpSmear_py.push_back(metmodified.shiftedPy(pat::MET::JetResUpSmear));
+  //nBranches_ -> MET_JetResDownSmear_py.push_back(metmodified.shiftedPy(pat::MET::JetResDownSmear));
+  //nBranches_ -> MET_METUncertaintySize_py.push_back(metmodified.shiftedPy(pat::MET::METUncertaintySize));
+  //nBranches_ -> MET_METUncertaintySize_py.push_back(metmodified.shiftedPy(pat::MET::METFullUncertaintySize));
   //-- Phi --//
   nBranches_ -> MET_JetResUp_phi.push_back(metmodified.shiftedPhi(pat::MET::JetResUp));
   nBranches_ -> MET_JetResDown_phi.push_back(metmodified.shiftedPhi(pat::MET::JetResDown));
@@ -126,10 +126,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> MET_PhotonEnUp_phi.push_back(metmodified.shiftedPhi(pat::MET::PhotonEnUp));
   nBranches_ -> MET_PhotonEnDown_phi.push_back(metmodified.shiftedPhi(pat::MET::PhotonEnDown));
   nBranches_ -> MET_NoShift_phi.push_back(metmodified.shiftedPhi(pat::MET::NoShift));
-  nBranches_ -> MET_JetResUpSmear_phi.push_back(metmodified.shiftedPhi(pat::MET::JetResUpSmear));
-  nBranches_ -> MET_JetResDownSmear_phi.push_back(metmodified.shiftedPhi(pat::MET::JetResDownSmear));
-  nBranches_ -> MET_METUncertaintySize_phi.push_back(metmodified.shiftedPhi(pat::MET::METUncertaintySize));
-  nBranches_ -> MET_METUncertaintySize_phi.push_back(metmodified.shiftedPhi(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> MET_JetResUpSmear_phi.push_back(metmodified.shiftedPhi(pat::MET::JetResUpSmear));
+  //nBranches_ -> MET_JetResDownSmear_phi.push_back(metmodified.shiftedPhi(pat::MET::JetResDownSmear));
+  //nBranches_ -> MET_METUncertaintySize_phi.push_back(metmodified.shiftedPhi(pat::MET::METUncertaintySize));
+  //nBranches_ -> MET_METUncertaintySize_phi.push_back(metmodified.shiftedPhi(pat::MET::METFullUncertaintySize));
   //-- SumEt --//
   nBranches_ -> MET_JetResUp_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::JetResUp));
   nBranches_ -> MET_JetResDown_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::JetResDown));
@@ -146,10 +146,11 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> MET_PhotonEnUp_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::PhotonEnUp));
   nBranches_ -> MET_PhotonEnDown_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::PhotonEnDown));
   nBranches_ -> MET_NoShift_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::NoShift));
-  nBranches_ -> MET_JetResUpSmear_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::JetResUpSmear));
-  nBranches_ -> MET_JetResDownSmear_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::JetResDownSmear));
-  nBranches_ -> MET_METUncertaintySize_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::METUncertaintySize));
-  nBranches_ -> MET_METUncertaintySize_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> MET_JetResUpSmear_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::JetResUpSmear));
+  //nBranches_ -> MET_JetResDownSmear_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::JetResDownSmear));
+  //nBranches_ -> MET_METUncertaintySize_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::METUncertaintySize));
+  //nBranches_ -> MET_METUncertaintySize_sumEt.push_back(metmodified.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  
   //************************************************************************
   // MET with PF
   nBranches_ -> METPFraw_pt.push_back(metmodifiedPF.uncorPt());
@@ -162,6 +163,7 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPF_phi.push_back(metmodifiedPF.phi());
   nBranches_ -> METPF_sumEt.push_back(metmodifiedPF.sumEt());
   //-- PT --//
+  
   nBranches_ -> METPF_JetResUp_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::JetResUp));
   nBranches_ -> METPF_JetResDown_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::JetResDown));
   nBranches_ -> METPF_JetEnUp_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::JetEnUp));
@@ -177,10 +179,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPF_PhotonEnUp_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::PhotonEnUp));
   nBranches_ -> METPF_PhotonEnDown_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::PhotonEnDown));
   nBranches_ -> METPF_NoShift_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::NoShift));
-  nBranches_ -> METPF_JetResUpSmear_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::JetResUpSmear));
-  nBranches_ -> METPF_JetResDownSmear_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::JetResDownSmear));
-  nBranches_ -> METPF_METUncertaintySize_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::METUncertaintySize));
-  nBranches_ -> METPF_METUncertaintySize_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPF_JetResUpSmear_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPF_JetResDownSmear_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPF_METUncertaintySize_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPF_METUncertaintySize_pt.push_back(metmodifiedPF.shiftedPt(pat::MET::METFullUncertaintySize));
   //-- Px --//
   nBranches_ -> METPF_JetResUp_px.push_back(metmodifiedPF.shiftedPx(pat::MET::JetResUp));
   nBranches_ -> METPF_JetResDown_px.push_back(metmodifiedPF.shiftedPx(pat::MET::JetResDown));
@@ -197,10 +199,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPF_PhotonEnUp_px.push_back(metmodifiedPF.shiftedPx(pat::MET::PhotonEnUp));
   nBranches_ -> METPF_PhotonEnDown_px.push_back(metmodifiedPF.shiftedPx(pat::MET::PhotonEnDown));
   nBranches_ -> METPF_NoShift_px.push_back(metmodifiedPF.shiftedPx(pat::MET::NoShift));
-  nBranches_ -> METPF_JetResUpSmear_px.push_back(metmodifiedPF.shiftedPx(pat::MET::JetResUpSmear));
-  nBranches_ -> METPF_JetResDownSmear_px.push_back(metmodifiedPF.shiftedPx(pat::MET::JetResDownSmear));
-  nBranches_ -> METPF_METUncertaintySize_px.push_back(metmodifiedPF.shiftedPx(pat::MET::METUncertaintySize));
-  nBranches_ -> METPF_METUncertaintySize_px.push_back(metmodifiedPF.shiftedPx(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPF_JetResUpSmear_px.push_back(metmodifiedPF.shiftedPx(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPF_JetResDownSmear_px.push_back(metmodifiedPF.shiftedPx(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPF_METUncertaintySize_px.push_back(metmodifiedPF.shiftedPx(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPF_METUncertaintySize_px.push_back(metmodifiedPF.shiftedPx(pat::MET::METFullUncertaintySize));
   //-- Py --//
   nBranches_ -> METPF_JetResUp_py.push_back(metmodifiedPF.shiftedPy(pat::MET::JetResUp));
   nBranches_ -> METPF_JetResDown_py.push_back(metmodifiedPF.shiftedPy(pat::MET::JetResDown));
@@ -217,10 +219,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPF_PhotonEnUp_py.push_back(metmodifiedPF.shiftedPy(pat::MET::PhotonEnUp));
   nBranches_ -> METPF_PhotonEnDown_py.push_back(metmodifiedPF.shiftedPy(pat::MET::PhotonEnDown));
   nBranches_ -> METPF_NoShift_py.push_back(metmodifiedPF.shiftedPy(pat::MET::NoShift));
-  nBranches_ -> METPF_JetResUpSmear_py.push_back(metmodifiedPF.shiftedPy(pat::MET::JetResUpSmear));
-  nBranches_ -> METPF_JetResDownSmear_py.push_back(metmodifiedPF.shiftedPy(pat::MET::JetResDownSmear));
-  nBranches_ -> METPF_METUncertaintySize_py.push_back(metmodifiedPF.shiftedPy(pat::MET::METUncertaintySize));
-  nBranches_ -> METPF_METUncertaintySize_py.push_back(metmodifiedPF.shiftedPy(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPF_JetResUpSmear_py.push_back(metmodifiedPF.shiftedPy(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPF_JetResDownSmear_py.push_back(metmodifiedPF.shiftedPy(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPF_METUncertaintySize_py.push_back(metmodifiedPF.shiftedPy(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPF_METUncertaintySize_py.push_back(metmodifiedPF.shiftedPy(pat::MET::METFullUncertaintySize));
   //-- Phi --//
   nBranches_ -> METPF_JetResUp_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::JetResUp));
   nBranches_ -> METPF_JetResDown_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::JetResDown));
@@ -237,10 +239,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPF_PhotonEnUp_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::PhotonEnUp));
   nBranches_ -> METPF_PhotonEnDown_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::PhotonEnDown));
   nBranches_ -> METPF_NoShift_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::NoShift));
-  nBranches_ -> METPF_JetResUpSmear_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::JetResUpSmear));
-  nBranches_ -> METPF_JetResDownSmear_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::JetResDownSmear));
-  nBranches_ -> METPF_METUncertaintySize_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::METUncertaintySize));
-  nBranches_ -> METPF_METUncertaintySize_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPF_JetResUpSmear_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPF_JetResDownSmear_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPF_METUncertaintySize_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPF_METUncertaintySize_phi.push_back(metmodifiedPF.shiftedPhi(pat::MET::METFullUncertaintySize));
   //-- SumEt --//
   nBranches_ -> METPF_JetResUp_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::JetResUp));
   nBranches_ -> METPF_JetResDown_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::JetResDown));
@@ -257,10 +259,11 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPF_PhotonEnUp_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::PhotonEnUp));
   nBranches_ -> METPF_PhotonEnDown_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::PhotonEnDown));
   nBranches_ -> METPF_NoShift_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::NoShift));
-  nBranches_ -> METPF_JetResUpSmear_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::JetResUpSmear));
-  nBranches_ -> METPF_JetResDownSmear_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::JetResDownSmear));
-  nBranches_ -> METPF_METUncertaintySize_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::METUncertaintySize));
-  nBranches_ -> METPF_METUncertaintySize_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPF_JetResUpSmear_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPF_JetResDownSmear_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPF_METUncertaintySize_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPF_METUncertaintySize_sumEt.push_back(metmodifiedPF.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  
   //*******************************************************************************************
   // MET Puppi without PF
   nBranches_ -> METPuppiraw_pt.push_back(metpuppi.uncorPt());
@@ -288,10 +291,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppi_PhotonEnUp_pt.push_back(metpuppi.shiftedPt(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppi_PhotonEnDown_pt.push_back(metpuppi.shiftedPt(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppi_NoShift_pt.push_back(metpuppi.shiftedPt(pat::MET::NoShift));
-  nBranches_ -> METPuppi_JetResUpSmear_pt.push_back(metpuppi.shiftedPt(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppi_JetResDownSmear_pt.push_back(metpuppi.shiftedPt(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppi_METUncertaintySize_pt.push_back(metpuppi.shiftedPt(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppi_METUncertaintySize_pt.push_back(metpuppi.shiftedPt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppi_JetResUpSmear_pt.push_back(metpuppi.shiftedPt(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppi_JetResDownSmear_pt.push_back(metpuppi.shiftedPt(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppi_METUncertaintySize_pt.push_back(metpuppi.shiftedPt(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppi_METUncertaintySize_pt.push_back(metpuppi.shiftedPt(pat::MET::METFullUncertaintySize));
   //-- Px --//
   nBranches_ -> METPuppi_JetResUp_px.push_back(metpuppi.shiftedPx(pat::MET::JetResUp));
   nBranches_ -> METPuppi_JetResDown_px.push_back(metpuppi.shiftedPx(pat::MET::JetResDown));
@@ -308,10 +311,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppi_PhotonEnUp_px.push_back(metpuppi.shiftedPx(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppi_PhotonEnDown_px.push_back(metpuppi.shiftedPx(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppi_NoShift_px.push_back(metpuppi.shiftedPx(pat::MET::NoShift));
-  nBranches_ -> METPuppi_JetResUpSmear_px.push_back(metpuppi.shiftedPx(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppi_JetResDownSmear_px.push_back(metpuppi.shiftedPx(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppi_METUncertaintySize_px.push_back(metpuppi.shiftedPx(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppi_METUncertaintySize_px.push_back(metpuppi.shiftedPx(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppi_JetResUpSmear_px.push_back(metpuppi.shiftedPx(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppi_JetResDownSmear_px.push_back(metpuppi.shiftedPx(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppi_METUncertaintySize_px.push_back(metpuppi.shiftedPx(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppi_METUncertaintySize_px.push_back(metpuppi.shiftedPx(pat::MET::METFullUncertaintySize));
   //-- Py --//
   nBranches_ -> METPuppi_JetResUp_py.push_back(metpuppi.shiftedPy(pat::MET::JetResUp));
   nBranches_ -> METPuppi_JetResDown_py.push_back(metpuppi.shiftedPy(pat::MET::JetResDown));
@@ -328,10 +331,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppi_PhotonEnUp_py.push_back(metpuppi.shiftedPy(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppi_PhotonEnDown_py.push_back(metpuppi.shiftedPy(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppi_NoShift_py.push_back(metpuppi.shiftedPy(pat::MET::NoShift));
-  nBranches_ -> METPuppi_JetResUpSmear_py.push_back(metpuppi.shiftedPy(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppi_JetResDownSmear_py.push_back(metpuppi.shiftedPy(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppi_METUncertaintySize_py.push_back(metpuppi.shiftedPy(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppi_METUncertaintySize_py.push_back(metpuppi.shiftedPy(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppi_JetResUpSmear_py.push_back(metpuppi.shiftedPy(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppi_JetResDownSmear_py.push_back(metpuppi.shiftedPy(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppi_METUncertaintySize_py.push_back(metpuppi.shiftedPy(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppi_METUncertaintySize_py.push_back(metpuppi.shiftedPy(pat::MET::METFullUncertaintySize));
   //-- Phi --//
   nBranches_ -> METPuppi_JetResUp_phi.push_back(metpuppi.shiftedPhi(pat::MET::JetResUp));
   nBranches_ -> METPuppi_JetResDown_phi.push_back(metpuppi.shiftedPhi(pat::MET::JetResDown));
@@ -348,10 +351,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppi_PhotonEnUp_phi.push_back(metpuppi.shiftedPhi(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppi_PhotonEnDown_phi.push_back(metpuppi.shiftedPhi(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppi_NoShift_phi.push_back(metpuppi.shiftedPhi(pat::MET::NoShift));
-  nBranches_ -> METPuppi_JetResUpSmear_phi.push_back(metpuppi.shiftedPhi(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppi_JetResDownSmear_phi.push_back(metpuppi.shiftedPhi(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppi_METUncertaintySize_phi.push_back(metpuppi.shiftedPhi(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppi_METUncertaintySize_phi.push_back(metpuppi.shiftedPhi(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppi_JetResUpSmear_phi.push_back(metpuppi.shiftedPhi(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppi_JetResDownSmear_phi.push_back(metpuppi.shiftedPhi(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppi_METUncertaintySize_phi.push_back(metpuppi.shiftedPhi(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppi_METUncertaintySize_phi.push_back(metpuppi.shiftedPhi(pat::MET::METFullUncertaintySize));
   //-- SumEt --//
   nBranches_ -> METPuppi_JetResUp_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::JetResUp));
   nBranches_ -> METPuppi_JetResDown_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::JetResDown));
@@ -368,10 +371,11 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppi_PhotonEnUp_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppi_PhotonEnDown_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppi_NoShift_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::NoShift));
-  nBranches_ -> METPuppi_JetResUpSmear_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppi_JetResDownSmear_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppi_METUncertaintySize_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppi_METUncertaintySize_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppi_JetResUpSmear_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppi_JetResDownSmear_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppi_METUncertaintySize_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppi_METUncertaintySize_sumEt.push_back(metpuppi.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  
   //***********************************************************************************
   // MET Puppi with PF
   nBranches_ -> METPuppiPFraw_pt.push_back(metpuppiPF.uncorPt());
@@ -399,10 +403,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppiPF_PhotonEnUp_pt.push_back(metpuppiPF.shiftedPt(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppiPF_PhotonEnDown_pt.push_back(metpuppiPF.shiftedPt(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppiPF_NoShift_pt.push_back(metpuppiPF.shiftedPt(pat::MET::NoShift));
-  nBranches_ -> METPuppiPF_JetResUpSmear_pt.push_back(metpuppiPF.shiftedPt(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppiPF_JetResDownSmear_pt.push_back(metpuppiPF.shiftedPt(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppiPF_METUncertaintySize_pt.push_back(metpuppiPF.shiftedPt(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppiPF_METUncertaintySize_pt.push_back(metpuppiPF.shiftedPt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppiPF_JetResUpSmear_pt.push_back(metpuppiPF.shiftedPt(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppiPF_JetResDownSmear_pt.push_back(metpuppiPF.shiftedPt(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_pt.push_back(metpuppiPF.shiftedPt(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_pt.push_back(metpuppiPF.shiftedPt(pat::MET::METFullUncertaintySize));
   //-- Px --//
   nBranches_ -> METPuppiPF_JetResUp_px.push_back(metpuppiPF.shiftedPx(pat::MET::JetResUp));
   nBranches_ -> METPuppiPF_JetResDown_px.push_back(metpuppiPF.shiftedPx(pat::MET::JetResDown));
@@ -419,10 +423,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppiPF_PhotonEnUp_px.push_back(metpuppiPF.shiftedPx(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppiPF_PhotonEnDown_px.push_back(metpuppiPF.shiftedPx(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppiPF_NoShift_px.push_back(metpuppiPF.shiftedPx(pat::MET::NoShift));
-  nBranches_ -> METPuppiPF_JetResUpSmear_px.push_back(metpuppiPF.shiftedPx(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppiPF_JetResDownSmear_px.push_back(metpuppiPF.shiftedPx(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppiPF_METUncertaintySize_px.push_back(metpuppiPF.shiftedPx(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppiPF_METUncertaintySize_px.push_back(metpuppiPF.shiftedPx(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppiPF_JetResUpSmear_px.push_back(metpuppiPF.shiftedPx(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppiPF_JetResDownSmear_px.push_back(metpuppiPF.shiftedPx(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_px.push_back(metpuppiPF.shiftedPx(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_px.push_back(metpuppiPF.shiftedPx(pat::MET::METFullUncertaintySize));
   //-- Py --//
   nBranches_ -> METPuppiPF_JetResUp_py.push_back(metpuppiPF.shiftedPy(pat::MET::JetResUp));
   nBranches_ -> METPuppiPF_JetResDown_py.push_back(metpuppiPF.shiftedPy(pat::MET::JetResDown));
@@ -439,10 +443,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppiPF_PhotonEnUp_py.push_back(metpuppiPF.shiftedPy(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppiPF_PhotonEnDown_py.push_back(metpuppiPF.shiftedPy(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppiPF_NoShift_py.push_back(metpuppiPF.shiftedPy(pat::MET::NoShift));
-  nBranches_ -> METPuppiPF_JetResUpSmear_py.push_back(metpuppiPF.shiftedPy(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppiPF_JetResDownSmear_py.push_back(metpuppiPF.shiftedPy(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppiPF_METUncertaintySize_py.push_back(metpuppiPF.shiftedPy(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppiPF_METUncertaintySize_py.push_back(metpuppiPF.shiftedPy(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppiPF_JetResUpSmear_py.push_back(metpuppiPF.shiftedPy(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppiPF_JetResDownSmear_py.push_back(metpuppiPF.shiftedPy(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_py.push_back(metpuppiPF.shiftedPy(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_py.push_back(metpuppiPF.shiftedPy(pat::MET::METFullUncertaintySize));
   //-- Phi --//
   nBranches_ -> METPuppiPF_JetResUp_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::JetResUp));
   nBranches_ -> METPuppiPF_JetResDown_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::JetResDown));
@@ -459,10 +463,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppiPF_PhotonEnUp_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppiPF_PhotonEnDown_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppiPF_NoShift_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::NoShift));
-  nBranches_ -> METPuppiPF_JetResUpSmear_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppiPF_JetResDownSmear_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppiPF_METUncertaintySize_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppiPF_METUncertaintySize_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppiPF_JetResUpSmear_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppiPF_JetResDownSmear_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_phi.push_back(metpuppiPF.shiftedPhi(pat::MET::METFullUncertaintySize));
   //-- SumEt --//
   nBranches_ -> METPuppiPF_JetResUp_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::JetResUp));
   nBranches_ -> METPuppiPF_JetResDown_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::JetResDown));
@@ -479,8 +483,10 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   nBranches_ -> METPuppiPF_PhotonEnUp_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::PhotonEnUp));
   nBranches_ -> METPuppiPF_PhotonEnDown_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::PhotonEnDown));
   nBranches_ -> METPuppiPF_NoShift_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::NoShift));
-  nBranches_ -> METPuppiPF_JetResUpSmear_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::JetResUpSmear));
-  nBranches_ -> METPuppiPF_JetResDownSmear_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::JetResDownSmear));
-  nBranches_ -> METPuppiPF_METUncertaintySize_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::METUncertaintySize));
-  nBranches_ -> METPuppiPF_METUncertaintySize_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  //nBranches_ -> METPuppiPF_JetResUpSmear_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::JetResUpSmear));
+  //nBranches_ -> METPuppiPF_JetResDownSmear_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::JetResDownSmear));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::METUncertaintySize));
+  //nBranches_ -> METPuppiPF_METUncertaintySize_sumEt.push_back(metpuppiPF.shiftedSumEt(pat::MET::METFullUncertaintySize));
+  
+
 }
