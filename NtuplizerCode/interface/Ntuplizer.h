@@ -1,5 +1,6 @@
 #include <memory>
 #include "DataFormats/METReco/interface/METCollection.h"
+#include "DataFormats/PatCandidates/interface/MET.h"
 #include "FWCore/Framework/interface/Frameworkfwd.h"
 #include "FWCore/Framework/interface/EDAnalyzer.h"
 
@@ -38,9 +39,9 @@ class Ntuplizer : public edm::EDAnalyzer {
   NtupleBranches* nBranches_;
   std::map<std::string, CandidateNtuplizer*> nTuplizers_;
 
-  edm::EDGetTokenT<pat::METCollection> metmodifiedToken_;
-  edm::EDGetTokenT<pat::METCollection> metmodifiedPFToken_;
-  edm::EDGetTokenT<pat::METCollection> metpuppiToken_;
-  edm::EDGetTokenT<pat::METCollection> metpuppiPFToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedPFToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metpuppiToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metpuppiPFToken_;
 
 };

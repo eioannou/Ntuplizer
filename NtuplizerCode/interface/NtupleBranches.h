@@ -30,10 +30,10 @@ class NtupleBranches {
 
   /*-------------- MET -------------------------------------*/
   // MET Modified without PF
-  std::vector<float> METraw_pt;
-  std::vector<float> METraw_phi;
-  std::vector<float> METraw_sumEt;
-  std::vector<float> MET_pt;
+  std::vector<float> MET_rawet;
+  std::vector<float> MET_rawphi;
+  std::vector<float> MET_rawsumEt;
+  std::vector<float> MET_et;
   std::vector<float> MET_px;
   std::vector<float> MET_py;
   std::vector<float> MET_phi;
@@ -140,10 +140,10 @@ class NtupleBranches {
   std::vector<float> MET_METFullUncertaintySize_sumEt;
   //-------------------------------------------------------
   // MET Modified with PF
-  std::vector<float> METPFraw_pt;
-  std::vector<float> METPFraw_phi;
-  std::vector<float> METPFraw_sumEt;
-  std::vector<float> METPF_pt;
+  std::vector<float> METPF_rawet;
+  std::vector<float> METPF_rawphi;
+  std::vector<float> METPF_rawsumEt;
+  std::vector<float> METPF_et;
   std::vector<float> METPF_px;
   std::vector<float> METPF_py;
   std::vector<float> METPF_phi;
@@ -250,10 +250,10 @@ class NtupleBranches {
   std::vector<float> METPF_METFullUncertaintySize_sumEt;
   //--------------------------------------------------------------
   // MET Puppi without PF
-  std::vector<float> METPuppiraw_pt;
-  std::vector<float> METPuppiraw_phi;
-  std::vector<float> METPuppiraw_sumEt;
-  std::vector<float> METPuppi_pt;
+  std::vector<float> METPuppi_rawet;
+  std::vector<float> METPuppi_rawphi;
+  std::vector<float> METPuppi_rawsumEt;
+  std::vector<float> METPuppi_et;
   std::vector<float> METPuppi_px;
   std::vector<float> METPuppi_py;
   std::vector<float> METPuppi_phi;
@@ -360,10 +360,10 @@ class NtupleBranches {
   std::vector<float> METPuppi_METFullUncertaintySize_sumEt;
   //------------------------------------------------------------
   // MET Puppi with PF
-  std::vector<float> METPuppiPFraw_pt;
-  std::vector<float> METPuppiPFraw_phi;
-  std::vector<float> METPuppiPFraw_sumEt;
-  std::vector<float> METPuppiPF_pt;
+  std::vector<float> METPuppiPF_rawet;
+  std::vector<float> METPuppiPF_rawphi;
+  std::vector<float> METPuppiPF_rawsumEt;
+  std::vector<float> METPuppiPF_et;
   std::vector<float> METPuppiPF_px;
   std::vector<float> METPuppiPF_py;
   std::vector<float> METPuppiPF_phi;

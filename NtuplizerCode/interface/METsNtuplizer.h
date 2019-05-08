@@ -8,10 +8,10 @@ class TFormula;
 class METsNtuplizer : public CandidateNtuplizer {
 
  public:
-  METsNtuplizer( edm::EDGetTokenT<pat::METCollection> metmodifiedtoken,
-		 edm::EDGetTokenT<pat::METCollection> metmodifiedPFtoken,
-		 edm::EDGetTokenT<pat::METCollection> metpuppitoken,
-		 edm::EDGetTokenT<pat::METCollection> metpuppiPFtoken,
+  METsNtuplizer( edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedtoken,
+		 edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedPFtoken,
+		 edm::EDGetTokenT<edm::View<pat::MET> > metpuppitoken,
+		 edm::EDGetTokenT<edm::View<pat::MET> > metpuppiPFtoken,
 		 NtupleBranches* nBranches,
 		 std::map< std::string, bool>& runFlags);
   ~METsNtuplizer( void );
@@ -19,15 +19,15 @@ class METsNtuplizer : public CandidateNtuplizer {
   void fillBranches( edm::Event const & event, const edm::EventSetup& iSetup );
   
  private:
-  edm::EDGetTokenT<pat::METCollection> metmodifiedInputToken_;
-  edm::EDGetTokenT<pat::METCollection> metmodifiedPFInputToken_;
-  edm::EDGetTokenT<pat::METCollection> metpuppiInputToken_;
-  edm::EDGetTokenT<pat::METCollection> metpuppiPFInputToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedInputToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metmodifiedPFInputToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metpuppiInputToken_;
+  edm::EDGetTokenT<edm::View<pat::MET> > metpuppiPFInputToken_;
 
-  edm::Handle<pat::METCollection> METsmodified_;
-  edm::Handle<pat::METCollection> METsmodifiedPF_;
-  edm::Handle<pat::METCollection> METspuppi_;
-  edm::Handle<pat::METCollection> METspuppiPF_;
+  edm::Handle<edm::View<pat::MET> > METsmodified_;
+  edm::Handle<edm::View<pat::MET> > METsmodifiedPF_;
+  edm::Handle<edm::View<pat::MET> > METspuppi_;
+  edm::Handle<edm::View<pat::MET> > METspuppiPF_;
 
 };
 
