@@ -6,10 +6,10 @@
 
 Ntuplizer::Ntuplizer( const edm::ParameterSet& iConfig):
 
-  metmodifiedToken_ (consumes<pat::METCollection>(iConfig.getParameter<edm::InputTag>("met_modified"))),
-  metmodifiedPFToken_ (consumes<pat::METCollection>(iConfig.getParameter<edm::InputTag>("met_modifiedPF"))),
-  metpuppiToken_ (consumes<pat::METCollection>(iConfig.getParameter<edm::InputTag>("met_puppi"))),
-  metpuppiPFToken_ (consumes<pat::METCollection>(iConfig.getParameter<edm::InputTag>("met_puppiPF")))
+  metmodifiedToken_ (consumes<edm::View<pat::MET> >(iConfig.getParameter<edm::InputTag>("met_modified"))),
+  metmodifiedPFToken_ (consumes<edm::View<pat::MET> >(iConfig.getParameter<edm::InputTag>("met_modifiedPF"))),
+  metpuppiToken_ (consumes<edm::View<pat::MET> >(iConfig.getParameter<edm::InputTag>("met_puppi"))),
+  metpuppiPFToken_ (consumes<edm::View<pat::MET> >(iConfig.getParameter<edm::InputTag>("met_puppiPF")))
 
 {
 

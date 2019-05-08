@@ -41,11 +41,11 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   const pat::MET &metpuppiPF = METspuppiPF_ -> front();
 
   // MET without PF
-  nBranches_ -> METraw_pt.push_back(metmodified.uncorPt());
-  nBranches_ -> METraw_phi.push_back(metmodified.uncorPhi());
-  nBranches_ -> METraw_sumEt.push_back(metmodified.uncorSumEt());
+  nBranches_ -> MET_rawet.push_back(metmodified.uncorPt());
+  nBranches_ -> MET_rawphi.push_back(metmodified.uncorPhi());
+  nBranches_ -> MET_rawsumEt.push_back(metmodified.uncorSumEt());
 
-  nBranches_ -> MET_pt.push_back(metmodified.pt());
+  nBranches_ -> MET_et.push_back(metmodified.pt());
   nBranches_ -> MET_px.push_back(metmodified.px());
   nBranches_ -> MET_py.push_back(metmodified.py());
   nBranches_ -> MET_phi.push_back(metmodified.phi());
@@ -153,11 +153,11 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   
   //************************************************************************
   // MET with PF
-  nBranches_ -> METPFraw_pt.push_back(metmodifiedPF.uncorPt());
-  nBranches_ -> METPFraw_phi.push_back(metmodifiedPF.uncorPhi());
-  nBranches_ -> METPFraw_sumEt.push_back(metmodifiedPF.uncorSumEt());
+  nBranches_ -> METPF_rawet.push_back(metmodifiedPF.uncorPt());
+  nBranches_ -> METPF_rawphi.push_back(metmodifiedPF.uncorPhi());
+  nBranches_ -> METPF_rawsumEt.push_back(metmodifiedPF.uncorSumEt());
 
-  nBranches_ -> METPF_pt.push_back(metmodifiedPF.pt());
+  nBranches_ -> METPF_et.push_back(metmodifiedPF.pt());
   nBranches_ -> METPF_px.push_back(metmodifiedPF.px());
   nBranches_ -> METPF_py.push_back(metmodifiedPF.py());
   nBranches_ -> METPF_phi.push_back(metmodifiedPF.phi());
@@ -266,11 +266,11 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   
   //*******************************************************************************************
   // MET Puppi without PF
-  nBranches_ -> METPuppiraw_pt.push_back(metpuppi.uncorPt());
-  nBranches_ -> METPuppiraw_phi.push_back(metpuppi.uncorPhi());
-  nBranches_ -> METPuppiraw_sumEt.push_back(metpuppi.uncorSumEt());
+  nBranches_ -> METPuppi_rawet.push_back(metpuppi.uncorPt());
+  nBranches_ -> METPuppi_rawphi.push_back(metpuppi.uncorPhi());
+  nBranches_ -> METPuppi_rawsumEt.push_back(metpuppi.uncorSumEt());
 
-  nBranches_ -> METPuppi_pt.push_back(metpuppi.pt());
+  nBranches_ -> METPuppi_et.push_back(metpuppi.pt());
   nBranches_ -> METPuppi_px.push_back(metpuppi.px());
   nBranches_ -> METPuppi_py.push_back(metpuppi.py());
   nBranches_ -> METPuppi_phi.push_back(metpuppi.phi());
@@ -378,11 +378,11 @@ void METsNtuplizer::fillBranches( edm::Event const & event, const edm::EventSetu
   
   //***********************************************************************************
   // MET Puppi with PF
-  nBranches_ -> METPuppiPFraw_pt.push_back(metpuppiPF.uncorPt());
-  nBranches_ -> METPuppiPFraw_phi.push_back(metpuppiPF.uncorPhi());
-  nBranches_ -> METPuppiPFraw_sumEt.push_back(metpuppiPF.uncorSumEt());
+  nBranches_ -> METPuppiPF_rawet.push_back(metpuppiPF.uncorPt());
+  nBranches_ -> METPuppiPF_rawphi.push_back(metpuppiPF.uncorPhi());
+  nBranches_ -> METPuppiPF_rawsumEt.push_back(metpuppiPF.uncorSumEt());
 
-  nBranches_ -> METPuppiPF_pt.push_back(metpuppiPF.pt());
+  nBranches_ -> METPuppiPF_et.push_back(metpuppiPF.pt());
   nBranches_ -> METPuppiPF_px.push_back(metpuppiPF.px());
   nBranches_ -> METPuppiPF_py.push_back(metpuppiPF.py());
   nBranches_ -> METPuppiPF_phi.push_back(metpuppiPF.phi());

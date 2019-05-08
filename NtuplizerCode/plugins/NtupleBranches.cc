@@ -21,10 +21,10 @@ void NtupleBranches::branch( std::map< std::string, bool >& runFlags ){
   /*------ MET Branches -----*/
   if (runFlags["doMissingEt"]){
     // MET without PF
-    tree_ -> Branch("METraw_pt", &METraw_pt);
-    tree_ -> Branch("METraw_phi", &METraw_phi);
-    tree_ -> Branch("METraw_sumEt", &METraw_sumEt);
-    tree_ -> Branch("MET_pt", &MET_pt);
+    tree_ -> Branch("MET_rawet", &MET_rawet);
+    tree_ -> Branch("MET_rawphi", &MET_rawphi);
+    tree_ -> Branch("MET_rawsumEt", &MET_rawsumEt);
+    tree_ -> Branch("MET_et", &MET_et);
     tree_ -> Branch("MET_px", &MET_px);
     tree_ -> Branch("MET_py", &MET_py);
     tree_ -> Branch("MET_phi", &MET_phi);
@@ -130,10 +130,10 @@ void NtupleBranches::branch( std::map< std::string, bool >& runFlags ){
     tree_ -> Branch("MET_JetResDownSmear_sumEt", &MET_JetResDownSmear_sumEt);
     tree_ -> Branch("MET_METFullUncertaintySize_sumEt", &MET_METFullUncertaintySize_sumEt);
     // MET with PF
-    tree_ -> Branch("METPFraw_pt", &METPFraw_pt);
-    tree_ -> Branch("METPFraw_phi", &METPFraw_phi);
-    tree_ -> Branch("METPFraw_sumEt", &METPFraw_sumEt);
-    tree_ -> Branch("METPF_pt", &METPF_pt);
+    tree_ -> Branch("METPF_rawet", &METPF_rawet);
+    tree_ -> Branch("METPF_rawphi", &METPF_rawphi);
+    tree_ -> Branch("METPF_rawsumEt", &METPF_rawsumEt);
+    tree_ -> Branch("METPF_et", &METPF_et);
     tree_ -> Branch("METPF_px", &METPF_px);
     tree_ -> Branch("METPF_py", &METPF_py);
     tree_ -> Branch("METPF_phi", &METPF_phi);
@@ -239,10 +239,10 @@ void NtupleBranches::branch( std::map< std::string, bool >& runFlags ){
     tree_ -> Branch("METPF_JetResDownSmear_sumEt", &METPF_JetResDownSmear_sumEt);
     tree_ -> Branch("METPF_METFullUncertaintySize_sumEt", &METPF_METFullUncertaintySize_sumEt);
     // MET Puppi without PF
-    tree_ -> Branch("METPuppiraw_pt", &METPuppiraw_pt);
-    tree_ -> Branch("METPuppiraw_phi", &METPuppiraw_phi);
-    tree_ -> Branch("METPuppiraw_sumEt", &METPuppiraw_sumEt);
-    tree_ -> Branch("METPuppi_pt", &METPuppi_pt);
+    tree_ -> Branch("METPuppi_rawet", &METPuppi_rawet);
+    tree_ -> Branch("METPuppi_rawphi", &METPuppi_rawphi);
+    tree_ -> Branch("METPuppi_rawsumEt", &METPuppi_rawsumEt);
+    tree_ -> Branch("METPuppi_et", &METPuppi_et);
     tree_ -> Branch("METPuppi_px", &METPuppi_px);
     tree_ -> Branch("METPuppi_py", &METPuppi_py);
     tree_ -> Branch("METPuppi_phi", &METPuppi_phi);
@@ -348,10 +348,10 @@ void NtupleBranches::branch( std::map< std::string, bool >& runFlags ){
     tree_ -> Branch("METPuppi_JetResDownSmear_sumEt", &METPuppi_JetResDownSmear_sumEt);
     tree_ -> Branch("METPuppi_METFullUncertaintySize_sumEt", &METPuppi_METFullUncertaintySize_sumEt);
     // MET Puppi with PF
-    tree_ -> Branch("METPuppiPFraw_pt", &METPuppiPFraw_pt);
-    tree_ -> Branch("METPuppiPFraw_phi", &METPuppiPFraw_phi);
-    tree_ -> Branch("METPuppiPFraw_sumEt", &METPuppiPFraw_sumEt);
-    tree_ -> Branch("METPuppiPF_pt", &METPuppiPF_pt);
+    tree_ -> Branch("METPuppiPF_rawet", &METPuppiPF_rawet);
+    tree_ -> Branch("METPuppiPF_rawphi", &METPuppiPF_rawphi);
+    tree_ -> Branch("METPuppiPF_rawsumEt", &METPuppiPF_rawsumEt);
+    tree_ -> Branch("METPuppiPF_et", &METPuppiPF_et);
     tree_ -> Branch("METPuppiPF_px", &METPuppiPF_px);
     tree_ -> Branch("METPuppiPF_py", &METPuppiPF_py);
     tree_ -> Branch("METPuppiPF_phi", &METPuppiPF_phi);
@@ -470,10 +470,10 @@ void NtupleBranches::reset( void ){
 
   //--- MET ---//
   // MET Modified without PF
-  METraw_pt.clear();
-  METraw_phi.clear();
-  METraw_sumEt.clear();
-  MET_pt.clear();
+  MET_rawet.clear();
+  MET_rawphi.clear();
+  MET_rawsumEt.clear();
+  MET_et.clear();
   MET_px.clear();
   MET_py.clear();
   MET_phi.clear();
@@ -580,10 +580,10 @@ void NtupleBranches::reset( void ){
    MET_METFullUncertaintySize_sumEt.clear();
    //-------------------------------------------------------
    // MET Modified with PF
-   METPFraw_pt.clear();
-   METPFraw_phi.clear();
-   METPFraw_sumEt.clear();
-   METPF_pt.clear();
+   METPF_rawet.clear();
+   METPF_rawphi.clear();
+   METPF_rawsumEt.clear();
+   METPF_et.clear();
    METPF_px.clear();
    METPF_py.clear();
    METPF_phi.clear();
@@ -690,10 +690,10 @@ void NtupleBranches::reset( void ){
    METPF_METFullUncertaintySize_sumEt.clear();
    //--------------------------------------------------------------
    // MET Puppi without PF
-   METPuppiraw_pt.clear();
-   METPuppiraw_phi.clear();
-   METPuppiraw_sumEt.clear();
-   METPuppi_pt.clear();
+   METPuppi_rawet.clear();
+   METPuppi_rawphi.clear();
+   METPuppi_rawsumEt.clear();
+   METPuppi_et.clear();
    METPuppi_px.clear();
    METPuppi_py.clear();
    METPuppi_phi.clear();
@@ -800,10 +800,10 @@ void NtupleBranches::reset( void ){
    METPuppi_METFullUncertaintySize_sumEt.clear();
    //------------------------------------------------------------
    // MET Puppi with PF
-   METPuppiPFraw_pt.clear();
-   METPuppiPFraw_phi.clear();
-   METPuppiPFraw_sumEt.clear();
-   METPuppiPF_pt.clear();
+   METPuppiPF_rawet.clear();
+   METPuppiPF_rawphi.clear();
+   METPuppiPF_rawsumEt.clear();
+   METPuppiPF_et.clear();
    METPuppiPF_px.clear();
    METPuppiPF_py.clear();
    METPuppiPF_phi.clear();
